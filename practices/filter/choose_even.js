@@ -1,6 +1,11 @@
 'use strict';
 
 function choose_even(collection) {
+    var _ = require('../mylodash/array.js');
+    return _.filter(collection, function(n) {
+        return n % 2 === 0;
+    });
+
     // var array = [];
     // function even(){
     //     for(var i = 0;i < collection.length;i++) {
@@ -53,10 +58,6 @@ function choose_even(collection) {
   //     }
   // });
 
-  var _ = require('../mylodash/array.js');
-  return _.filter(collection, function(n) {
-      return n % 2 === 0;
-  });
 
 
 

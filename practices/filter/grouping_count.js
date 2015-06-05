@@ -1,7 +1,14 @@
 'use strict';
 
 function grouping_count(collection) {
-  //
+    var _ = require('../mylodash/array.js');
+    var temp = {};
+
+    _.each(collection,function(val) {
+        temp[val] = temp[val] || 0;
+        temp[val]++;
+    });
+    return temp;
   // //在这里写入代码
   // var _ = require('../lodash');
   // return _.countBy(collection);
@@ -20,19 +27,7 @@ function grouping_count(collection) {
   //
   // }
   // return temp;
-  var _ = require('../mylodash/array.js');
-  var even_array = _.filter(collection,function(val) {
-      return val % 2 == 0;
-  });
-  var temp = {};
-  _.each(even_array,function(val) {
-      var key = val;
-      var count = 1;
-      temp[key] = temp[key] || count;
-      temp[key] = count++;
 
-  });
-  return temp;
 
 }
 

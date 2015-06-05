@@ -1,6 +1,14 @@
 'use strict';
 
 function choose_no_repeat_number(collection) {
+    var _ = require('../mylodash/array.js');
+    var result = [];
+    _.each(collection,function(n) {
+        if(!_.exist(n,result)) {
+            result.push(n);
+        }
+    })
+    return result;
 
   //在这里写入代码
   // var _ = require('../lodash');
@@ -32,14 +40,17 @@ function choose_no_repeat_number(collection) {
 //   return array;
 // }
 //=======方法3============
-    var array = [];
-    var hash = {};
-    for(var i = 0;collection[i] != null;i++) {
-        if(!hash[collection[i]]) {
-            array.push(collection[i]);
-            hash[collection[i]] = true;
-        }
-    }
-    return array;
+    // var array = [];
+    // var hash = {};
+    // for(var i = 0;collection[i] != null;i++) {
+    //     if(!hash[collection[i]]) {
+    //         array.push(collection[i]);
+    //         hash[collection[i]] = true;
+    //     }
+    // }
+    // return array;
+
+
+
 }
 module.exports = choose_no_repeat_number;
