@@ -1,7 +1,11 @@
 'use strict';
 
 function find_last_even(collection) {
-  //在这里写入代码
+
+    var _ = require('../mylodash/array.js');
+    return _.last(collection,function(val) {
+        return val % 2 == 0;
+    }) //在这里写入代码
   //=========方法1============
   // for(var i = collection.length-1; i>= 0;i--) {
   //     if(collection[i] % 2 == 0) {
@@ -17,10 +21,7 @@ function find_last_even(collection) {
   //     }
   // }
   // return array[array.length-1];
-  var _ = require('../mylodash/array.js');
-  return _.last(collection,function(val) {
-      return val % 2 == 0;
-  })
+
 }
 
 

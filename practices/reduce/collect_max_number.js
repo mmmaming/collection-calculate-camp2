@@ -1,6 +1,15 @@
 'use strict';
 
 function collect_max_number(collection) {
+    var _ = require('../mylodash/array.js');
+    return _.reduce(collection,function (a, b) {
+        if(a>b) {
+            return a;
+        }else {
+            return b;
+        }
+    });
+
   //在这里写入代码
   // var max = 0;
   // for(var i = 0;i < collection.length;i++) {
@@ -36,17 +45,6 @@ function collect_max_number(collection) {
   // }
   //
   // return reduce(collection,max);
-  var _ = require('../mylodash/array.js');
-  return _.reduce(collection,function (a, b) {
-      if(a>b) {
-          return a;
-      }else {
-          return b;
-      }
-  });
-
-
-
 
 }
 
