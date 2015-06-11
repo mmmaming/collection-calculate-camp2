@@ -10,7 +10,7 @@ function choose_divisible_integer(collection_a, collection_b) {
             }
         })
     })
-    return result;
+    return result;c
 
   // var array = [];
   // for (var i = 0; i < collection_a.length; i++) {
@@ -21,7 +21,6 @@ function choose_divisible_integer(collection_a, collection_b) {
   //     }
   // }
   // return array;
-  //
 }
 
 module.exports = choose_divisible_integer;

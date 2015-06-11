@@ -12,5 +12,3 @@ describe('collect_last_element', function () {
     expect(result).toEqual(5);
   });
 });
-
-

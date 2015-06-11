@@ -1,0 +1,7 @@
+function traverse(collection,fun){
+    for(var i = 0;i < collection.length;i++) {
+	return fun(collection[i]);
+    }
+}
+
+module.exports = traverse;

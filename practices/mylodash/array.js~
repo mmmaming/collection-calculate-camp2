@@ -1,0 +1,127 @@
+function each(array,fun){
+   for(var i = 0;i < array.length;i++) {
+       fun(array[i],i);
+   }
+}
+
+function filter(collection,fun) {
+    var result = [];
+    each(collection,function(q,i) {
+            if(fun(q,i)){
+                result.push(q);
+            }
+    });
+    return result;
+}
+
+
+function remove(collection,fun) {
+     var result = [];
+     each(collection,function(q) {
+             if(!fun(q)){
+                 result.push(q);
+             }
+     });
+     return result;
+ }
+
+ function reduce(collection,fun) {
+     var result = collection[0];
+     each(collection,function(n,i){
+         if(i === 0) {
+             result = collection[i];
+         }else{
+             result = fun(result,n);
+         }
+     });
+     return result;
+ }
+
+ function map(array,fun){
+     var result = [];
+     each(array,function(n) {
+         result.push(fun(n));
+     })
+     return result;
+ }
+
+ // function last(array,fun){//不适用于只有一个元素且不符合条件的要求
+ //     var result = [];
+ //     if(fun != undefined) {
+ //         each(array,function(val, key) {
+ //             if(fun(val,key)) {
+ //                 result.push(val);
+ //             }
+ //         });
+ //     }
+ //     return result.length == 0 ? array[array.length-1] : result[result.length-1] ;
+ // }
+ // 此方法采用倒序的方法，从数组最后一个元素开始判断，如果符合条件，直接返回。
+ // function last1(array,fun) {
+ //     for(var i = array.length-1;i >= 0; i--) {
+ //         if(fun(array[i])){
+ //             return array[i];
+ //         }
+ //     }
+ // }
+
+ function last(array,fun) {
+     if(fun != undefined) {
+         array = filter(array,fun);
+     }
+     return reduce(array,function(a, b) {
+         return b;
+     })
+ }
+
+ function first(array,fun) {
+     if(fun != undefined) {
+         array = filter(array,fun);
+     }
+     return reduce(array,function(a, b) {
+         return a;
+     })
+ }
+
+ function rank(collection){
+     var map = [];
+     for(var i =0;collection[i]!=null;i++) {
+         var exist = false;
+         for(var j = 0;j < map.length;j++) {
+             if(collection[i] < map[j]){
+                 map.splice(j,0,collection[i]);
+                 exist = true;
+                 break;
+             }
+         }
+         if(!exist) {
+             map.push(collection[i]);
+         }
+     }
+     return map;
+ }
+
+ function median(array) {
+     var map = rank(array);
+     if(map.length % 2 == 0) {
+         return (map[map.length/2] + map[map.length/2-1])/2;
+     }else {
+         return map[parseInt(map.length/2)];
+     }
+ }
+
+
+
+ module.exports ={
+     'filter'  : filter,
+     'each'    : each,
+     'remove'  : remove,
+     'reduce'  : reduce,
+     'map'     : map,
+     'last'    : last,
+     'first'   : first,
+     'rank'    : rank,
+     'median'  : median
+
+
+ };

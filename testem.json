@@ -1,0 +1,9 @@
+{
+    "launchers":{
+        "Jasmine":{
+            "command": "jasmine-node ./specs/superposition_operation/interval_operation/median_to_letter_spec.js"
+        }
+    },
+    "launch_in_dev": ["Jasmine"],
+    "src_files": ["./practices/map/number_map_to_word_over_26.js"]
+}
