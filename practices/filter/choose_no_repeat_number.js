@@ -1,56 +1,43 @@
 'use strict';
 
 function choose_no_repeat_number(collection) {
-    var _ = require('../mylodash/array.js');
     var result = [];
-    _.each(collection,function(n) {
-        if(!_.exist(n,result)) {
-            result.push(n);
+    _(collection).each(function(val) {
+        if(!_(result).exist(val)) {
+            result.push(val)
         }
     })
     return result;
-
-  //在这里写入代码
-  // var _ = require('../lodash');
-  // return _.uniq(collection,true);
-  //========方法1==========
-  // var array = [];
-  // for(var i = 0;i < collection.length;i++) {
-  //     var exist = false;
-  //     for(var j = 0;j < array.length;j++) {
-  //         if(collection[i] == array[j]){
-  //             exist = true;
-  //             break;
-  //         }
-  //     }
-  //     if(!exist) {
-  //         array.push(collection[i]);
-  //     }
-  // }
-  // return array;
-  //==========方法2=================
-//   collection.sort();
-//   var array = [];
-//   for(var i = 0;i < collection.length;i++){
-//       if(collection[i] == collection[i+1]){
-//           continue;
-//       }
-//       array.push(collection[i]);
-//   }
-//   return array;
-// }
-//=======方法3============
-    // var array = [];
-    // var hash = {};
-    // for(var i = 0;collection[i] != null;i++) {
-    //     if(!hash[collection[i]]) {
-    //         array.push(collection[i]);
-    //         hash[collection[i]] = true;
+    // var _ = require('../mylodash/array.js');
+    // var result = [];
+    // _.each(collection,function(n) {
+    //     if(!_.exist(n,result)) {
+    //         result.push(n);
     //     }
-    // }
-    // return array;
-
-
-
+    // })
+    // return result;
 }
+function _(collection) {
+    if(!(this instanceof _)){
+        return new _(collection);
+    }
+    this.collection = collection;
+}
+_.prototype.each = function(fun) {
+    for(var i = 0 ; i < this.collection.length; i++) {
+        fun(this.collection[i] , i);
+    }
+}
+
+_.prototype.exist = function(element) {
+    var result = false;
+    this.each(function(val , key) {
+        if( val === element) {
+            result = true;
+        }
+    })
+    return result;
+}
+
+
 module.exports = choose_no_repeat_number;
